@@ -5,4 +5,29 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MainActivity"/>
+        tools:context=".MainActivity">
+    <com.adroitandroid.chipcloud.ChipCloud
+            xmlns:chipcloud="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/chip_cloud"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            chipcloud:deselectedColor="@color/deselected_color"
+            chipcloud:deselectedFontColor="@color/deselected_font_color"
+            chipcloud:selectedColor="@color/selected_color"
+            chipcloud:selectedFontColor="@color/selected_font_color"
+            chipcloud:deselectTransitionMS="500"
+            chipcloud:selectTransitionMS="750"
+            chipcloud:labels="@array/labels"
+            chipcloud:selectMode="required"
+            chipcloud:allCaps="true"
+            chipcloud:gravity="staggered"
+            chipcloud:minHorizontalSpacing="32dp"
+            chipcloud:verticalSpacing="16dp"
+            chipcloud:textSize="14sp"
+            chipcloud:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            chipcloud:layout_constraintTop_toTopOf="parent" android:layout_marginStart="8dp"
+            chipcloud:layout_constraintStart_toStartOf="parent" android:layout_marginEnd="8dp"
+            chipcloud:layout_constraintEnd_toEndOf="parent"/>
+</android.support.constraint.ConstraintLayout>
