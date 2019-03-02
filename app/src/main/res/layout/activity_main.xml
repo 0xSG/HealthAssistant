@@ -17,7 +17,7 @@
             chipcloud:selectedFontColor="@color/selected_font_color"
             chipcloud:deselectTransitionMS="500"
             chipcloud:selectTransitionMS="750"
-            chipcloud:labels="@array/labels"
+
             chipcloud:selectMode="required"
             chipcloud:allCaps="true"
             chipcloud:gravity="staggered"

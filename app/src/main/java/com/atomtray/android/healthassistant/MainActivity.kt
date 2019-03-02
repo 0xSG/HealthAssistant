@@ -2,6 +2,7 @@ package com.atomtray.android.healthassistant
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import com.adroitandroid.chipcloud.ChipCloud
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -13,6 +14,7 @@ class MainActivity : AppCompatActivity() {
         chip_cloud.addChip("yo ")
         chip_cloud.addChip("yo ")
         chip_cloud.addChip("yo ")
+        chip_cloud.setMode(ChipCloud.Mode.MULTI)
 
 
     }
