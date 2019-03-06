@@ -10,11 +10,12 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        chip_cloud.addChip("yo ")
-        chip_cloud.addChip("yo ")
-        chip_cloud.addChip("yo ")
-        chip_cloud.addChip("yo ")
+        chip_cloud.addChip("Do you have headache? ")
+        chip_cloud.addChip("Is your eyes paining? ")
+        chip_cloud.addChip("Do you have any stomachache?")
+        chip_cloud.addChip("Do you feel uncomfort?")
         chip_cloud.setMode(ChipCloud.Mode.MULTI)
+
 
 
     }
