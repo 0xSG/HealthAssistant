@@ -7,28 +7,34 @@
         android:background="#2C1D1D"
         android:layout_height="match_parent"
         tools:context=".MainActivity">
-    <com.adroitandroid.chipcloud.ChipCloud
-            xmlns:chipcloud="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/chip_cloud"
+    <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            chipcloud:deselectedColor="#009A41"
-            chipcloud:deselectedFontColor="#fff"
-            chipcloud:selectedColor="#ee7b34"
-            chipcloud:selectedFontColor="#290f03"
-            chipcloud:deselectTransitionMS="500"
-            chipcloud:selectTransitionMS="750"
+            android:layout_height="match_parent">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                      android:orientation="vertical">
+            <com.adroitandroid.chipcloud.ChipCloud
+                    android:id="@+id/chip_cloud"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:deselectedColor="#009A41"
+                    app:deselectedFontColor="#fff"
+                    app:selectedColor="#ee7b34"
+                    app:selectedFontColor="#290f03"
+                    app:deselectTransitionMS="500"
+                    app:selectTransitionMS="750"
 
-            chipcloud:selectMode="required"
-            chipcloud:allCaps="true"
-            chipcloud:gravity="staggered"
-            chipcloud:minHorizontalSpacing="16dp"
-            chipcloud:verticalSpacing="16dp"
-            chipcloud:textSize="16sp"
-            chipcloud:layout_constraintTop_toTopOf="parent"
-            chipcloud:layout_constraintStart_toStartOf="parent"
-            chipcloud:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="8dp"
-            chipcloud:layout_constraintBottom_toTopOf="@+id/button" android:layout_marginBottom="8dp"/>
+                    app:selectMode="required"
+                    app:allCaps="true"
+                    app:gravity="staggered"
+                    app:minHorizontalSpacing="16dp"
+                    app:verticalSpacing="16dp"
+                    app:textSize="16sp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="8dp"
+                    app:layout_constraintBottom_toTopOf="@+id/button" android:layout_marginBottom="8dp"/>
+        </LinearLayout>
+    </ScrollView>
     <Button
             android:text="Analyze"
             android:layout_width="wrap_content"

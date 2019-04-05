@@ -23,7 +23,14 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     protected Interpreter tflite;
     public static final List<String> OUTPUT_LABELS = Collections.unmodifiableList(
-            Arrays.asList("zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"));
+            Arrays.asList("anemia", "asthma", "bone fracture", "bone infection", "common cold", "gastritis", "high blood pressure", "high cholesterol", "sprained ankle", "sprained knee", "tension headache", "type 1 diabetes", "type 2 diabetes", "vitamin d deficiency"));
+    public static final List<String> INPUT_LABELS = Collections.unmodifiableList(
+            Arrays.asList("abdominal pain", "anxiety", "arm pain", "back pain", "bleeding",
+                    "blurred vision", "bone loss", "burning sensation", "cavity",
+                    "coughing", "depression", "discomfort", "dry cough", "ear pain",
+                    "fast breathing", "feeling cold", "fever", "foot pain",
+                    "hand pain", "headache", "insomnia", "knee pain", "leg pain",
+                    "pain", "red rashes", "redness", "rib pain", "sadness"));
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -33,10 +40,10 @@ public class MainActivity extends AppCompatActivity {
 
         //Cloud Chip initialization and data adding
         ChipCloud cp = findViewById(R.id.chip_cloud);
-        cp.addChip("Do you have headache? ");
-        cp.addChip("Is your eyes paining? ");
-        cp.addChip("Do you have any stomachache?");
-        cp.addChip("Do you feel uncomfort?");
+        for(String sym:INPUT_LABELS)
+            cp.addChip(sym);
+        
+
         cp.setMode(ChipCloud.Mode.MULTI);
 
         //TF lite initialization.
@@ -54,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
             for(float i:output[0])
                 Log.d("sgk", String.valueOf(i));*/
             tflite.run(input,output);
-            
+
             /*Log.d("sgk", "After------");
             for(float i:output[0])
             Log.d("sgk", String.valueOf(i));*/
