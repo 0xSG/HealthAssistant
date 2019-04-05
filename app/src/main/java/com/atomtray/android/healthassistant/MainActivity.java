@@ -6,8 +6,11 @@ import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 import com.adroitandroid.chipcloud.ChipCloud;
+import com.adroitandroid.chipcloud.ChipListener;
 import org.tensorflow.lite.Interpreter;
 import org.tensorflow.lite.TensorFlowLite;
 
@@ -16,6 +19,7 @@ import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.MappedByteBuffer;
 import java.nio.channels.FileChannel;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -31,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
                     "fast breathing", "feeling cold", "fever", "foot pain",
                     "hand pain", "headache", "insomnia", "knee pain", "leg pain",
                     "pain", "red rashes", "redness", "rib pain", "sadness"));
+    private ChipCloud cp;
+    public static List<Float> selectedList;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -38,38 +44,73 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.activity_main);
 
+        //initialising selected List
+        selectedList = new ArrayList<>();
+        for(int k=0;k<INPUT_LABELS.size();k++)
+            selectedList.add(0f);
+
         //Cloud Chip initialization and data adding
-        ChipCloud cp = findViewById(R.id.chip_cloud);
+        cp = findViewById(R.id.chip_cloud);
         for(String sym:INPUT_LABELS)
             cp.addChip(sym);
 
 
         cp.setMode(ChipCloud.Mode.MULTI);
+        cp.setChipListener(new ChipListener() {
+            @Override
+            public void chipSelected(int index) {
+                //Toast.makeText(getApplicationContext(),INPUT_LABELS.get(index),Toast.LENGTH_LONG).show();
+                selectedList.set(index,1.0f);
+            }
+            @Override
+            public void chipDeselected(int index) {
+                selectedList.set(index,0.0f);
+                //...
+            }
+        });
 
-        //TF lite initialization.
 
 
-        try {
-            tflite = new Interpreter((MappedByteBuffer) loadModelFile(getAssets(),"model.tflite"));
+        Button ana = findViewById(R.id.analysisBtn);
+        ana.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+
+                    //get array from cloudChips
+
+                    //Convert into array.
+                    //pass into the model.
+
+                    //TF lite initialization.
+                    tflite = new Interpreter((MappedByteBuffer) loadModelFile(getAssets(),"model.tflite"));
 
 //            Object input = Collections.unmodifiableList(
 //                    Arrays.asList("1", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"));
-            float[][] output = new float[][]{{0,0,0,0,0,0,0,0,0,0,0,0,0,0}};
-            float[][] input = {{0, 1, 1,0, 1,0, 1,0, 1,0, 1,0, 1,0, 1,0, 1,0, 1,0, 1,0, 1,0, 1,0, 0,1}};
+                    float[][] output = new float[][]{{0,0,0,0,0,0,0,0,0,0,0,0,0,0}};
+                    float[][] input = new float[1][selectedList.size()];
+                    for(int k=0;k<selectedList.size();k++){
+                        input[0][k]=selectedList.get(k);
+                    }
 
-            /*Log.d("sgk", "Before------");
+            //Log.d("sgk", "Before------");
+                    /*for(Object i:selectedList.toArray())
+                        Log.d("sgk", String.valueOf(i)+":"+input[0].length);
+                    Toast.makeText(getApplicationContext(),"Analysing..",Toast.LENGTH_LONG).show();*/
+                    tflite.run(input,output);
+            Log.d("sgk", "After------");
             for(float i:output[0])
-                Log.d("sgk", String.valueOf(i));*/
-            tflite.run(input,output);
+            Log.d("sgk", String.valueOf(i));
 
-            /*Log.d("sgk", "After------");
-            for(float i:output[0])
-            Log.d("sgk", String.valueOf(i));*/
 
-            Toast.makeText(this,"dd",Toast.LENGTH_LONG).show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+
+
     }
 
 
