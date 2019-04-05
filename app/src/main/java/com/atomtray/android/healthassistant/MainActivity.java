@@ -98,9 +98,16 @@ public class MainActivity extends AppCompatActivity {
                         Log.d("sgk", String.valueOf(i)+":"+input[0].length);
                     Toast.makeText(getApplicationContext(),"Analysing..",Toast.LENGTH_LONG).show();*/
                     tflite.run(input,output);
-            Log.d("sgk", "After------");
-            for(float i:output[0])
-            Log.d("sgk", String.valueOf(i));
+//            Log.d("sgk", "After------");
+//            for(float i:output[0])
+//            Log.d("sgk", String.valueOf(i));
+                    int maxAt = 0;
+
+                    for (int i = 0; i < output[0].length; i++) {
+                        maxAt = output[0][i] > output[0][maxAt] ? i : maxAt;
+                    }
+
+                    Toast.makeText(getApplicationContext(),OUTPUT_LABELS.get(maxAt),Toast.LENGTH_LONG).show();
 
 
                 } catch (IOException e) {
