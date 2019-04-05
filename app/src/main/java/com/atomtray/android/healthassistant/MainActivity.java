@@ -5,6 +5,7 @@ import android.content.res.AssetFileDescriptor;
 import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.Toast;
 import com.adroitandroid.chipcloud.ChipCloud;
 import org.tensorflow.lite.Interpreter;
@@ -48,7 +49,16 @@ public class MainActivity extends AppCompatActivity {
 //                    Arrays.asList("1", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"));
             float[][] output = new float[][]{{0,0,0,0,0,0,0,0,0,0,0,0,0,0}};
             float[][] input = {{0, 1, 1,0, 1,0, 1,0, 1,0, 1,0, 1,0, 1,0, 1,0, 1,0, 1,0, 1,0, 1,0, 0,1}};
+
+            /*Log.d("sgk", "Before------");
+            for(float i:output[0])
+                Log.d("sgk", String.valueOf(i));*/
             tflite.run(input,output);
+            
+            /*Log.d("sgk", "After------");
+            for(float i:output[0])
+            Log.d("sgk", String.valueOf(i));*/
+
             Toast.makeText(this,"dd",Toast.LENGTH_LONG).show();
         } catch (IOException e) {
             e.printStackTrace();
