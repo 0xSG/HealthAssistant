@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         ChipCloud cp = findViewById(R.id.chip_cloud);
         for(String sym:INPUT_LABELS)
             cp.addChip(sym);
-        
+
 
         cp.setMode(ChipCloud.Mode.MULTI);
 
