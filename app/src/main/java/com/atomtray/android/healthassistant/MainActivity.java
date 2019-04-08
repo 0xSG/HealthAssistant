@@ -1,6 +1,7 @@
 package com.atomtray.android.healthassistant;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.res.AssetFileDescriptor;
 import android.content.res.AssetManager;
 import android.os.Bundle;
@@ -98,9 +99,11 @@ public class MainActivity extends AppCompatActivity {
                         Log.d("sgk", String.valueOf(i)+":"+input[0].length);
                     Toast.makeText(getApplicationContext(),"Analysing..",Toast.LENGTH_LONG).show();*/
                     tflite.run(input,output);
-//            Log.d("sgk", "After------");
-//            for(float i:output[0])
-//            Log.d("sgk", String.valueOf(i));
+/*
+
+            Log.d("sgk", "After------");
+            for(float i:output[0])
+            Log.d("sgk", String.valueOf(i));
                     int maxAt = 0;
 
                     for (int i = 0; i < output[0].length; i++) {
@@ -108,7 +111,11 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                     Toast.makeText(getApplicationContext(),OUTPUT_LABELS.get(maxAt),Toast.LENGTH_LONG).show();
+*/
 
+                Intent i = new Intent(MainActivity.this, ResultScreen.class);
+                i.putExtra("output",output);
+                startActivity(i);
 
                 } catch (IOException e) {
                     e.printStackTrace();
