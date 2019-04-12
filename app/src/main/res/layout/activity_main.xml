@@ -9,15 +9,16 @@
         tools:context=".MainActivity">
     <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="640dp"
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintTop_toBottomOf="@+id/imageView">
         <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
                       android:orientation="vertical">
             <com.adroitandroid.chipcloud.ChipCloud
                     android:id="@+id/chip_cloud"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:deselectedColor="#009A41"
-                    app:deselectedFontColor="#fff"
+                    app:deselectedColor="#DDDDDD"
+                    app:deselectedFontColor="#4D4D4D"
                     app:selectedColor="#ee7b34"
                     app:selectedFontColor="#290f03"
                     app:deselectTransitionMS="500"
@@ -35,13 +36,20 @@
                     app:layout_constraintBottom_toTopOf="@+id/analysisBtn" android:layout_marginBottom="8dp"/>
         </LinearLayout>
     </ScrollView>
-    <Button
-            android:text="Analyze"
+    <ImageView
+            android:layout_width="0dp"
+            android:scaleX="1.15"
+            android:layout_height="wrap_content" app:srcCompat="@drawable/action_bar_bg"
+            android:id="@+id/imageView"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintHorizontal_bias="0.0"/>
+    <android.support.design.widget.FloatingActionButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:transitionName="analysebtn"
+            android:clickable="true" app:srcCompat="@drawable/ic_grain_black_24dp"
             android:id="@+id/analysisBtn"
-
-            android:layout_marginBottom="56dp" app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"/>
+            app:backgroundTint="@color/background_color" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="50dp"/>
 </android.support.constraint.ConstraintLayout>

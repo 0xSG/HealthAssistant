@@ -1,13 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/font_color</item>
         <item name="colorPrimaryDark">#2C1D1D</item>
         <item name="colorAccent">#FF5722</item>
-
+        <item name="android:windowContentTransitions">true</item>
 
     </style>
-
 </resources>
