@@ -31,6 +31,7 @@ public class ResultScreen extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 finish();
+
             }
         });
 
@@ -56,6 +57,14 @@ public class ResultScreen extends AppCompatActivity {
         t.setText(""+OUTPUT_REME .get(maxAt));
         Toast.makeText(getApplicationContext(),""+output[maxAt], Toast.LENGTH_LONG).show();
 
+
+    }
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (isFinishing()){
+            overridePendingTransition(R.anim.fadein, R.anim.fadeout);
+        }
 
     }
 }

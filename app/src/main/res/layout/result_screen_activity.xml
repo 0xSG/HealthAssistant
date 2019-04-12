@@ -22,6 +22,7 @@
                 android:layout_height="match_parent">
             <ImageView
                     android:layout_width="match_parent"
+
                     android:layout_height="wrap_content" app:srcCompat="@drawable/ic_grain_black_24dp"
                     android:id="@+id/imageView2" android:contentDescription="TODO" tools:ignore="VectorDrawableCompat"/>
             <TextView

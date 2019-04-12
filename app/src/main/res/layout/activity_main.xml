@@ -19,8 +19,8 @@
                     android:layout_height="wrap_content"
                     app:deselectedColor="#DDDDDD"
                     app:deselectedFontColor="#4D4D4D"
-                    app:selectedColor="#ee7b34"
-                    app:selectedFontColor="#290f03"
+                    app:selectedColor="#EE601B"
+                    app:selectedFontColor="#FFFFFF"
                     app:deselectTransitionMS="500"
                     app:selectTransitionMS="750"
 
