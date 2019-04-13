@@ -39,6 +39,7 @@
     <ImageView
             android:layout_width="0dp"
             android:scaleX="1.15"
+            android:transitionName="actionBar"
             android:layout_height="wrap_content" app:srcCompat="@drawable/action_bar_bg"
             android:id="@+id/imageView"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"

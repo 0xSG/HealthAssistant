@@ -143,9 +143,10 @@ public class MainActivity extends AppCompatActivity {
                 i.putExtra("output",output[0]);
                     Pair<View, String> p1 = Pair.create((View)ana, "analysebtn");
                     Pair<View, String> p2 = Pair.create(findViewById(R.id.retryHolder), "retry");
+                    Pair<View, String> p3 = Pair.create(findViewById(R.id.imageView), "actionBar");
                     ActivityOptionsCompat options = ActivityOptionsCompat.
                             makeSceneTransitionAnimation(MainActivity.this,
-                                   p1,p2);
+                                   p1,p2,p3);
 
                 startActivity(i,options.toBundle());
 
