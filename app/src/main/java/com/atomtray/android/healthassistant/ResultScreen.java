@@ -30,7 +30,7 @@ public class ResultScreen extends AppCompatActivity {
         findViewById(R.id.finishBTN).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                ResultScreen.super.onBackPressed();
 
             }
         });

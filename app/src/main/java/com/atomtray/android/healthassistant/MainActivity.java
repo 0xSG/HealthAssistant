@@ -10,11 +10,12 @@ import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityOptionsCompat;
+import android.support.v4.util.Pair;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.transition.Explode;
 import android.util.Log;
-import android.util.Pair;
+
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -140,11 +141,11 @@ public class MainActivity extends AppCompatActivity {
 
                 Intent i = new Intent(MainActivity.this, ResultScreen.class);
                 i.putExtra("output",output[0]);
-
+                    Pair<View, String> p1 = Pair.create((View)ana, "analysebtn");
+                    Pair<View, String> p2 = Pair.create(findViewById(R.id.retryHolder), "retry");
                     ActivityOptionsCompat options = ActivityOptionsCompat.
                             makeSceneTransitionAnimation(MainActivity.this,
-                                    ana,
-                                    ViewCompat.getTransitionName(ana));
+                                   p1,p2);
 
                 startActivity(i,options.toBundle());
 

@@ -50,7 +50,7 @@
     <android.support.design.widget.FloatingActionButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
+            android:transitionName="retry"
             android:clickable="true" app:srcCompat="@drawable/retry_ico"
             android:id="@+id/finishBTN" app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent" android:layout_marginEnd="50dp"
