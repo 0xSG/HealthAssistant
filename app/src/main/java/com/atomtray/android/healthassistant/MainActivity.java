@@ -1,5 +1,6 @@
 package com.atomtray.android.healthassistant;
 
+import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.app.ActivityOptions;
 import android.content.Intent;
@@ -11,19 +12,15 @@ import android.support.annotation.RequiresApi;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.util.Pair;
-import android.support.v4.view.ViewCompat;
+
 import android.support.v7.app.AppCompatActivity;
 import android.transition.Explode;
-import android.util.Log;
 
 import android.view.View;
-import android.view.Window;
-import android.widget.Button;
 import android.widget.Toast;
 import com.adroitandroid.chipcloud.ChipCloud;
 import com.adroitandroid.chipcloud.ChipListener;
 import org.tensorflow.lite.Interpreter;
-import org.tensorflow.lite.TensorFlowLite;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -47,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
                     "pain", "red rashes", "redness", "rib pain", "sadness"));
     private ChipCloud cp;
     public static List<Float> selectedList;
+    private ValueAnimator animator1;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -87,6 +85,48 @@ public class MainActivity extends AppCompatActivity {
 
 
         final FloatingActionButton ana = findViewById(R.id.analysisBtn);
+
+
+        animator1 = ValueAnimator.ofFloat(0f, 1000f);
+        animator1.setDuration(2000);
+        animator1.setRepeatCount(ValueAnimator.INFINITE);
+        animator1.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+        {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation)
+            {
+                ;
+                if(Float.parseFloat(animation.getAnimatedValue().toString()) <= 500f) {
+                float value = Float.parseFloat(animation.getAnimatedValue().toString());
+
+                ana.setScaleX(1+ value/1500);
+                ana.setScaleY(1+ value/1500);
+
+            }else{
+                float value =1000f- Float.parseFloat(animation.getAnimatedValue().toString());
+                    ana.setScaleX(1+ value/1500);
+                    ana.setScaleY(1+ value/1500);
+
+
+            }
+            }
+        });/*.addUpdateListener(); {
+            animation ->
+            if(animation.animatedValue as Float <= 500f) {
+                var value = animation.animatedValue as Float
+
+                nextBtn?.scaleX =1+ value/1000
+                nextBtn?.scaleY =1+ value/1000
+            }else{
+                var value =1000f- animation.animatedValue as Float
+                nextBtn?.scaleX =1+ value/1000
+                nextBtn?.scaleY =1+ value/1000
+            }
+
+        }*/
+        animator1.start();
+
+
         ana.setElevation(10f);
 
         ana.setOnClickListener(new View.OnClickListener() {
@@ -103,7 +143,7 @@ public class MainActivity extends AppCompatActivity {
 
                 if(selectedBool)
                 try {
-
+                    animator1.cancel();
                     //get array from cloudChips
 
                     //Convert into array.
@@ -164,6 +204,11 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        animator1.start();
+    }
 
     private static ByteBuffer loadModelFile(AssetManager assetManager, String modelPath) throws IOException {
         AssetFileDescriptor fileDescriptor = assetManager.openFd(modelPath);
@@ -173,7 +218,5 @@ public class MainActivity extends AppCompatActivity {
         long declaredLength = fileDescriptor.getDeclaredLength();
         return fileChannel.map(FileChannel.MapMode.READ_ONLY, startOffset, declaredLength);
     }
-
-
 
 }
