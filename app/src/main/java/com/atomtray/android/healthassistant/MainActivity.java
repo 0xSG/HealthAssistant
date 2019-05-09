@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onAnimationUpdate(ValueAnimator animation)
             {
-                ;
+
                 if(Float.parseFloat(animation.getAnimatedValue().toString()) <= 500f) {
                 float value = Float.parseFloat(animation.getAnimatedValue().toString());
 
@@ -110,7 +110,8 @@ public class MainActivity extends AppCompatActivity {
 
             }
             }
-        });/*.addUpdateListener(); {
+        });
+        /*.addUpdateListener(); {
             animation ->
             if(animation.animatedValue as Float <= 500f) {
                 var value = animation.animatedValue as Float
