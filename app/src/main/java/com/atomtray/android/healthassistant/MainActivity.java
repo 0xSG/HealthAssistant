@@ -36,12 +36,12 @@ public class MainActivity extends AppCompatActivity {
     protected Interpreter tflite;
 
     public static final List<String> INPUT_LABELS = Collections.unmodifiableList(
-            Arrays.asList("abdominal pain", "anxiety", "arm pain", "back pain", "bleeding",
+            Arrays.asList("abdominal pain", "anxiety", "arm pain", "back pain", "running nose",
                     "blurred vision", "bone loss", "burning sensation", "cavity",
                     "coughing", "depression", "discomfort", "dry cough", "ear pain",
                     "fast breathing", "feeling cold", "fever", "foot pain",
                     "hand pain", "headache", "insomnia", "knee pain", "leg pain",
-                    "pain", "red rashes", "redness", "rib pain", "sadness"));
+                    "chest pain", "red rashes", "diabetes", "rib pain", "sadness"));
     private ChipCloud cp;
     public static List<Float> selectedList;
     private ValueAnimator animator1;
